@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
+using UnityEditor;
+ 
 
 
 public class MenuManager : MonoBehaviour
@@ -13,7 +14,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        highScoreMenuText.text = $"Best overall Highscor from {GameManager.Instance.bestPlayerName}: {GameManager.Instance.bestPlayerScore}";
+        highScoreMenuText.text = $"Best overall Highscore from {GameManager.Instance.bestPlayerName}: {GameManager.Instance.bestPlayerScore}";
     }
 
     // Update is called once per frame
@@ -25,5 +26,17 @@ public class MenuManager : MonoBehaviour
     public void StartGame()
     {
         GameManager.Instance.StartGame(uiNameInput.text);
+    }
+
+    public void Exit()
+    {
+        
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
+
+
     }
 }

@@ -26,7 +26,7 @@ public class MainManager : MonoBehaviour
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
         ScoreText.text = $"{GameManager.Instance.playerName} - Score : {m_Points}";
-        highscoreText.text = $"Best overall Highscor from {GameManager.Instance.bestPlayerName}: {GameManager.Instance.bestPlayerScore}";
+        highscoreText.text = $"Best overall Highscore from {GameManager.Instance.bestPlayerName}: {GameManager.Instance.bestPlayerScore}";
 
         int[] pointCountArray = new [] {1,1,2,2,5,5};
         for (int i = 0; i < LineCount; ++i)
@@ -60,7 +60,7 @@ public class MainManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene(0);
             }
         }
     }
@@ -82,6 +82,7 @@ public class MainManager : MonoBehaviour
             highscoreText.text = $"Best overall Highscor from {GameManager.Instance.bestPlayerName}: {GameManager.Instance.bestPlayerScore}";
         }
         GameOverText.SetActive(true);
+            Invoke("LoadMenu", 2f);
 
     }
 
